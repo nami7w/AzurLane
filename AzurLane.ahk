@@ -2332,7 +2332,7 @@ if (Find(x, y, 750, 682, 850, 742, Battle_Map))
 	}
 	if (IsDetect<1)
 		LogShow("偵查中。")
-	sleep 1000
+	sleep 1500
 	BOSSICO := "img/SubChapter/targetboss_1.png"
 	; /////////////////////檢查敵方艦隊的範圍////////////////////
 	if (AnchorChapter=9 and AnchorChapter2=2)
@@ -2383,7 +2383,7 @@ if (Find(x, y, 750, 682, 850, 742, Battle_Map))
 				C_Click(791, 556)
 				return
 			}
-			else if (GdipImageSearch(x, y, BOSSICO, 10, SearchDirection, MapX1, MapY1, MapX2, MapY2) and BossFailed<1) and (Bossaction="優先攻擊－切換隊伍")
+			else if (GdipImageSearch(x, y, BOSSICO, 15, SearchDirection, MapX1, MapY1, MapX2, MapY2) and BossFailed<1) and (Bossaction="優先攻擊－切換隊伍")
 			{
 				;如果出現BOSS則不做事 避免出現BOSS導致多打道中
 				LogShow("偵查到BOSS，等待切換隊伍")
@@ -2403,7 +2403,7 @@ if (Find(x, y, 750, 682, 850, 742, Battle_Map))
 			}
 		}
 	}
-	if (AlignCenter and IsDetect<1) and !(GdipImageSearch(x, y, "img/SubChapter/Map_Lower.png", 1, 1, 150, 540, 650, 740)) and ((Bossaction="優先攻擊－當前隊伍" or Bossaction="優先攻擊－切換隊伍") and !(GdipImageSearch(n, m, BOSSICO, 10, 1, MapX1, MapY1, MapX2, MapY2))) ; 嘗試置中地圖
+	if (AlignCenter and IsDetect<1) and !(GdipImageSearch(x, y, "img/SubChapter/Map_Lower.png", 1, 1, 150, 540, 650, 740)) and ((Bossaction="優先攻擊－當前隊伍" or Bossaction="優先攻擊－切換隊伍") and !(GdipImageSearch(n, m, BOSSICO, 15, 1, MapX1, MapY1, MapX2, MapY2))) ; 嘗試置中地圖
 	{
 		if (AnchorChapter="異色1" or AnchorChapter="異色2")
 		{
@@ -2582,7 +2582,7 @@ if (Find(x, y, 750, 682, 850, 742, Battle_Map))
 		}
 		if (Bossaction="優先攻擊－當前隊伍" or Bossaction="優先攻擊－切換隊伍" or Bossaction="撤退") ;ＢＯＳＳ
 		{
-			if (GdipImageSearch(x, y, BOSSICO, 10, SearchDirection, MapX1, MapY1, MapX2, MapY2) and BossFailed<1)
+			if (GdipImageSearch(x, y, BOSSICO, 15, SearchDirection, MapX1, MapY1, MapX2, MapY2) and BossFailed<1)
 			{
 				FindBoss := 1
 				if (Bossaction="撤退")
@@ -2698,10 +2698,35 @@ if (Find(x, y, 750, 682, 850, 742, Battle_Map))
 							}
 						}
 						GuiControlGet, AnchorChapter
-						if (AnchorChapter="異色1") ;異色格地圖太大，直接滑動到BOSS可能的出生點
+						if (AnchorChapter="墜落1" and AnchorChapter2="1") ;直接滑動到BOSS可能的出生點
 						{
 							sleep 1000
-							if (GdipImageSearch(x, y, BOSSICO, 10, SearchDirection, MapX1, MapY1, MapX2, MapY2) and BossFailed<1)
+							Loop, 2
+							{
+								Swipe(1050, 640, 200, 200)
+								sleep 400
+							}
+							if (GdipImageSearch(x, y, BOSSICO, 15, SearchDirection, MapX1, MapY1, MapX2, MapY2) and BossFailed<1)
+							{
+								LogShow("發現：最終ＢＯＳＳ！X : " x " Y: " y )
+								C_Click(x, y)
+								BossGetpixel := dwmgetpixel(x, y)
+								Loop, 10
+								{
+									if (BossGetpixel!=dwmgetpixel(x, y))
+									{
+										sleep 1500
+										Break
+									}
+									sleep 1000
+								}
+								return
+							}
+						}
+						else if (AnchorChapter="異色1") ;異色格地圖太大，直接滑動到BOSS可能的出生點
+						{
+							sleep 1000
+							if (GdipImageSearch(x, y, BOSSICO, 15, SearchDirection, MapX1, MapY1, MapX2, MapY2) and BossFailed<1)
 							{
 								LogShow("發現：最終ＢＯＳＳ！X : " x " Y: " y )
 								C_Click(x, y)
@@ -2725,7 +2750,7 @@ if (Find(x, y, 750, 682, 850, 742, Battle_Map))
 									sleep 300
 								}
 								sleep 500
-								if (GdipImageSearch(x, y, BOSSICO, 10, SearchDirection, MapX1, MapY1, MapX2, MapY2) and BossFailed<1)
+								if (GdipImageSearch(x, y, BOSSICO, 15, SearchDirection, MapX1, MapY1, MapX2, MapY2) and BossFailed<1)
 								{
 									LogShow("發現：最終ＢＯＳＳ(2)！X : " x " Y: " y )
 									C_Click(x, y)
@@ -2749,7 +2774,7 @@ if (Find(x, y, 750, 682, 850, 742, Battle_Map))
 										sleep 300
 									}
 									sleep 500
-									if (GdipImageSearch(x, y, BOSSICO, 10, SearchDirection, MapX1, MapY1, MapX2, MapY2) and BossFailed<1)
+									if (GdipImageSearch(x, y, BOSSICO, 15, SearchDirection, MapX1, MapY1, MapX2, MapY2) and BossFailed<1)
 									{
 										LogShow("發現：最終ＢＯＳＳ(3)！X : " x " Y: " y )
 										C_Click(x, y)
@@ -2771,7 +2796,7 @@ if (Find(x, y, 750, 682, 850, 742, Battle_Map))
 						else if (AnchorChapter="異色2" and AnchorChapter2="1") ;異色格地圖太大，直接滑動到BOSS可能的出生點2
 						{
 							sleep 1000
-							if (GdipImageSearch(x, y, BOSSICO, 10, SearchDirection, MapX1, MapY1, MapX2, MapY2) and BossFailed<1)
+							if (GdipImageSearch(x, y, BOSSICO, 15, SearchDirection, MapX1, MapY1, MapX2, MapY2) and BossFailed<1)
 							{
 								LogShow("發現：最終ＢＯＳＳ！X : " x " Y: " y )
 								C_Click(x, y)
@@ -2795,7 +2820,7 @@ if (Find(x, y, 750, 682, 850, 742, Battle_Map))
 									sleep 300
 								}
 								sleep 500
-								if (GdipImageSearch(x, y, BOSSICO, 10, SearchDirection, MapX1, MapY1, MapX2, MapY2) and BossFailed<1)
+								if (GdipImageSearch(x, y, BOSSICO, 15, SearchDirection, MapX1, MapY1, MapX2, MapY2) and BossFailed<1)
 								{
 									LogShow("發現：最終ＢＯＳＳ(2)！X : " x " Y: " y )
 									C_Click(x, y)
@@ -2819,7 +2844,7 @@ if (Find(x, y, 750, 682, 850, 742, Battle_Map))
 										sleep 300
 									}
 									sleep 500
-									if (GdipImageSearch(x, y, BOSSICO, 10, SearchDirection, MapX1, MapY1, MapX2, MapY2) and BossFailed<1)
+									if (GdipImageSearch(x, y, BOSSICO, 15, SearchDirection, MapX1, MapY1, MapX2, MapY2) and BossFailed<1)
 									{
 										LogShow("發現：最終ＢＯＳＳ(3)！X : " x " Y: " y )
 										C_Click(x, y)
@@ -2841,7 +2866,7 @@ if (Find(x, y, 750, 682, 850, 742, Battle_Map))
 						else if (AnchorChapter="異色2" and AnchorChapter2="4") ;異色格地圖太大，直接滑動到BOSS可能的出生點2
 						{
 							sleep 1000
-							if (GdipImageSearch(x, y, BOSSICO, 10, SearchDirection, MapX1, MapY1, MapX2, MapY2) and BossFailed<1)
+							if (GdipImageSearch(x, y, BOSSICO, 15, SearchDirection, MapX1, MapY1, MapX2, MapY2) and BossFailed<1)
 							{
 								LogShow("發現：最終ＢＯＳＳ！X : " x " Y: " y )
 								C_Click(x, y)
@@ -2861,7 +2886,7 @@ if (Find(x, y, 750, 682, 850, 742, Battle_Map))
 							{
 								Swipe(922, 253, 498, 608)
 								sleep 600
-								if (GdipImageSearch(x, y, BOSSICO, 10, SearchDirection, MapX1, MapY1, MapX2, MapY2) and BossFailed<1)
+								if (GdipImageSearch(x, y, BOSSICO, 15, SearchDirection, MapX1, MapY1, MapX2, MapY2) and BossFailed<1)
 								{
 									LogShow("發現：最終ＢＯＳＳ(2)！X : " x " Y: " y )
 									C_Click(x, y)
@@ -2925,7 +2950,7 @@ if (Find(x, y, 750, 682, 850, 742, Battle_Map))
 			LvIco := ["img/SubChapter/Lv.png"]
 			EliteIco := ["img/SubChapter/targetElite_1.png"]
 			Random, SearchDirection, 5, 8
-			if ((FindFleet(x, y, BOSSICO, 10, SearchDirection, MapX1, MapY1, MapX2, MapY2)
+			if ((FindFleet(x, y, BOSSICO, 15, SearchDirection, MapX1, MapY1, MapX2, MapY2)
 			or FindFleet(x, y, LvIco, 30, SearchDirection, MapX1, MapY1, MapX2, MapY2)
 			or (Ship_TargetElite and FindFleet(x, y, EliteIco, 0, SearchDirection, MapX1, MapY1, MapX2, MapY2)))
 			and !FindBoss)
@@ -3200,7 +3225,7 @@ if (Find(x, y, 750, 682, 850, 742, Battle_Map))
 		}
 		if ((Bossaction!="能不攻擊就不攻擊" or SearchLoopcount>10) and BossFailed<1 ) ;ＢＯＳＳ
 		{
-			if (GdipImageSearch(x, y, BOSSICO, 10, SearchDirection, MapX1, MapY1, MapX2, MapY2))
+			if (GdipImageSearch(x, y, BOSSICO, 15, SearchDirection, MapX1, MapY1, MapX2, MapY2))
 			{
 				xx := x 
 				yy := y 
@@ -7797,7 +7822,7 @@ FindWay(x, y) {
 			SearchLoopcountFailed2 := 0
 			SearchLoopcount := 0
 			sleep 1000
-			yy := y
+			xx := x, yy := y
 			Loop, 25
 			{
 				DetectPos+= 35
@@ -7822,7 +7847,8 @@ FindWay(x, y) {
 				}
 				sleep 100
 			}
-			if (m-yy<200 and IsFind) {
+			myposx := abs(xx-n)
+			if (m-yy<200 and myposx<150 and IsFind) {
 				sleep 1000
 				C_Click(x, yy)
 			}
