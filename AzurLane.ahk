@@ -5046,7 +5046,7 @@ if (AcademyDone<1)
 						sleep 600
 					}
 				}
-				if (GdipImageSearch(x, y, "img/SupplyStore/Part_Aircraft.png", 105, 8, ShopX1, ShopY1, ShopX2, ShopY2) and Part_Aircraft and Part_AircraftCoin<1) 
+				if (GdipImageSearch(x, y, "img/SupplyStore/Part_Aircraft.png", 100, 8, ShopX1, ShopY1, ShopX2, ShopY2) and Part_Aircraft and Part_AircraftCoin<1) 
 				{
 					Part_AircraftPos := dwmgetpixel(x,y)
 					LogShow("購買艦載機部件T3(金幣)")
@@ -5076,7 +5076,7 @@ if (AcademyDone<1)
 						sleep 600
 					}
 				}
-				if (GdipImageSearch(x, y, "img/SupplyStore/Part_Cannon.png", 105, 8, ShopX1, ShopY1, ShopX2, ShopY2) and Part_Cannon and Part_CannonCoin<1) 
+				if (GdipImageSearch(x, y, "img/SupplyStore/Part_Cannon.png", 100, 8, ShopX1, ShopY1, ShopX2, ShopY2) and Part_Cannon and Part_CannonCoin<1) 
 				{
 					Part_CannonPos := dwmgetpixel(x,y)
 					LogShow("購買主砲部件T3(金幣)")
@@ -5106,7 +5106,7 @@ if (AcademyDone<1)
 						sleep 600
 					}
 				}
-				if (GdipImageSearch(x, y, "img/SupplyStore/Part_torpedo.png", 113, 8, ShopX1, ShopY1, ShopX2, ShopY2) and Part_torpedo and Part_torpedoCoin<1) 
+				if (GdipImageSearch(x, y, "img/SupplyStore/Part_torpedo.png", 100, 8, ShopX1, ShopY1, ShopX2, ShopY2) and Part_torpedo and Part_torpedoCoin<1) 
 				{
 					Part_torpedoPos := dwmgetpixel(x,y)
 					LogShow("購買魚雷部件T3(金幣)")
@@ -5136,7 +5136,7 @@ if (AcademyDone<1)
 						sleep 600
 					}
 				}
-				if (GdipImageSearch(x, y, "img/SupplyStore/Part_Anti_Aircraft.png", 105, 8, ShopX1, ShopY1, ShopX2, ShopY2) and Part_Anti_Aircraft and Part_Anti_AircraftCoin<1) 
+				if (GdipImageSearch(x, y, "img/SupplyStore/Part_Anti_Aircraft.png", 100, 8, ShopX1, ShopY1, ShopX2, ShopY2) and Part_Anti_Aircraft and Part_Anti_AircraftCoin<1) 
 				{
 					Part_Anti_AircraftPos := dwmgetpixel(x,y)
 					LogShow("購買防空砲部件(金幣)")
@@ -5166,7 +5166,7 @@ if (AcademyDone<1)
 						sleep 600
 					}
 				}
-				if (GdipImageSearch(x, y, "img/SupplyStore/Part_Common.png", 105, 8, ShopX1, ShopY1, ShopX2, ShopY2) and Part_Common and Part_CommonCoin<1) 
+				if (GdipImageSearch(x, y, "img/SupplyStore/Part_Common.png", 100, 8, ShopX1, ShopY1, ShopX2, ShopY2) and Part_Common and Part_CommonCoin<1) 
 				{
 					Part_CommonPos := dwmgetpixel(x,y)
 					LogShow("購買共通部件(金幣)")
