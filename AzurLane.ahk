@@ -382,37 +382,49 @@ Tab2_Y-=2 ;268
 iniread, DailyParty, %SettingName%, Battle, DailyParty, 第一艦隊
 DailyPartyList = 第一艦隊|第二艦隊|第三艦隊|第四艦隊|第五艦隊|
 Gui, Add, DropDownList, x240 y%Tab2_Y% w90 h150 vDailyParty gAnchorsettings, % MenuList(DailyPartyList, DailyParty)
-
 iniread, DailyGoalRed, %SettingName%, Battle, DailyGoalRed, 1
 iniread, DailyGoalRedAction, %SettingName%, Battle, DailyGoalRedAction
 Tab2_Y+=30
 Gui, Add, CheckBox, x50 y%Tab2_Y% w110 h20 gAnchorsettings vDailyGoalRed checked%DailyGoalRed% , 斬首行動：第
 Tab2_Y-=2
-Gui, Add, DropDownList, x160 y%Tab2_Y% w40 h100 vDailyGoalRedAction gAnchorsettings Choose%DailyGoalRedAction% , 1||2|3|4|
+Gui, Add, DropDownList, x+5 y%Tab2_Y% w40 h100 vDailyGoalRedAction gAnchorsettings Choose%DailyGoalRedAction% , 1||2|3|4|
 Tab2_Y+=5
-Gui, Add, text, x210 y%Tab2_Y% w40 h20  , 關。
+Gui, Add, text, x+5 y%Tab2_Y% w40 h20  , 關。
 iniread, DailyGoalGreen, %SettingName%, Battle, DailyGoalGreen, 1
 iniread, DailyGoalGreenAction, %SettingName%, Battle, DailyGoalGreenAction
-Tab2_Y+=23
-Gui, Add, CheckBox, x50 y%Tab2_Y% w110 h20 gAnchorsettings vDailyGoalGreen checked%DailyGoalGreen% , 海域突進：第
 Tab2_Y-=2
-Gui, Add, DropDownList, x160 y%Tab2_Y% w40 h100 vDailyGoalGreenAction gAnchorsettings Choose%DailyGoalGreenAction% , 1||2|3|4|
+Gui, Add, CheckBox, x+10 y%Tab2_Y% w110 h20 gAnchorsettings vDailyGoalGreen checked%DailyGoalGreen% , 海域突進：第
+Tab2_Y-=2
+Gui, Add, DropDownList, x+5 y%Tab2_Y% w40 h100 vDailyGoalGreenAction gAnchorsettings Choose%DailyGoalGreenAction% , 1||2|3|4|
 Tab2_Y+=5
-Gui, Add, text, x210 y%Tab2_Y% w40 h20  , 關。
+Gui, Add, text, x+5 y%Tab2_Y% w40 h20  , 關。
 iniread, DailyGoalBlue, %SettingName%, Battle, DailyGoalBlue, 1
 iniread, DailyGoalBlueAction, %SettingName%, Battle, DailyGoalBlueAction
 Tab2_Y+=23
 Gui, Add, CheckBox, x50 y%Tab2_Y% w110 h20 gAnchorsettings vDailyGoalBlue checked%DailyGoalBlue% , 商船護衛：第
 Tab2_Y-=2
-Gui, Add, DropDownList, x160 y%Tab2_Y% w40 h100 vDailyGoalBlueAction gAnchorsettings Choose%DailyGoalBlueAction% , 1||2|3|4|
+Gui, Add, DropDownList, x+5 y%Tab2_Y% w40 h100 vDailyGoalBlueAction gAnchorsettings Choose%DailyGoalBlueAction% , 1||2|3|4|
 Tab2_Y+=5
-Gui, Add, text, x210 y%Tab2_Y% w40 h20  , 關。
-iniread, DailyGoalSunday, %SettingName%, Battle, DailyGoalSunday
-Tab2_Y-=29
-Gui, Add, CheckBox, x260 y%Tab2_Y% w140 h20 gAnchorsettings vDailyGoalSunday checked%DailyGoalSunday% , 禮拜日三個都打
-
+Gui, Add, text, x+5 y%Tab2_Y% w40 h20  , 關。
+Tab2_Y-=3
+iniread, DailyGoalSunday, %SettingName%, Battle, DailyGoalSunday, 1
+Gui, Add, CheckBox, x+10 y%Tab2_Y% w140 h20 gAnchorsettings vDailyGoalSunday checked%DailyGoalSunday% , 禮拜日執行全部
+Tab2_Y+=27
+iniread, DailyHardMap, %SettingName%, Battle, DailyHardMap, 0
+iniread, DailyHardMap2, %SettingName%, Battle, DailyHardMap2, 1
+iniread, DailyHardMap3, %SettingName%, Battle, DailyHardMap3, 1
+Gui, Add, CheckBox, x50 y%Tab2_Y% w110 h20 gAnchorsettings vDailyHardMap checked%DailyHardMap% , 困難地圖：第
+Tab2_Y-=2
+Gui, Add, DropDownList, x+5 y%Tab2_Y% w40 h170  gAnchorsettings vDailyHardMap2 Choose%DailyHardMap2% , 1||2|3|4|5|6|7|8|9|
+Tab2_Y+=5
+Gui, Add, text, x+5 y%Tab2_Y% w40 h20  , 章 第
+Tab2_Y-=5
+Gui, Add, DropDownList, x+5 y%Tab2_Y% w40 h170  gAnchorsettings vDailyHardMap3 Choose%DailyHardMap3% , 1||2|3|4|
+Tab2_Y+=5
+Gui, Add, text, x+10 y%Tab2_Y% w40 h20  , 節。
+Tab2_Y-=3
 iniread, OperationSub, %SettingName%, Battle, OperationSub
-Tab2_Y+=56
+Tab2_Y+=33
 Gui, Add, CheckBox, x30 y%Tab2_Y% w230 h20 gAnchorsettings vOperationSub checked%OperationSub% , 自動執行演習，選擇敵方艦隊：
 Tab2_Y-=2
 iniread, Operationenemy, %SettingName%, Battle, Operationenemy, 隨機的
@@ -423,9 +435,9 @@ Tab2_Y-=2
 Gui, Add, button, x355 y%Tab2_Y% w100 h24 gResetOperationSub vResetOperation, 重置演習 
 
 Tab2_Y+=30
-IniRead, ResetOperationTime, %SettingName%, Battle, ResetOperationTime, 1
+IniRead, ResetOperationTime, %SettingName%, Battle, ResetOperationTime, 0
 IniRead, ResetOperationTime2, %SettingName%, Battle, ResetOperationTime2, 1201, 1801, 0001
-Gui, Add, CheckBox, x50 y%Tab2_Y% w120 h20 gAnchorsettings vResetOperationTime checked%ResetOperationTime% , 自動重置時間
+Gui, Add, CheckBox, x50 y%Tab2_Y% w120 h20 gAnchorsettings vResetOperationTime checked%ResetOperationTime% , 指定重置時間
 Gui, Add, Edit, x170 y%Tab2_Y% w285 h20 gAnchorsettings vResetOperationTime2 , %ResetOperationTime2%
 Tab2_Y+=28
 IniRead, Operation_Only, %SettingName%, Battle, Operation_Only, 0
@@ -1055,6 +1067,9 @@ Guicontrolget, DailyGoalGreen
 Guicontrolget, DailyGoalGreenAction
 Guicontrolget, DailyGoalBlue
 Guicontrolget, DailyGoalBlueAction
+Guicontrolget, DailyHardMap
+Guicontrolget, DailyHardMap2
+Guicontrolget, DailyHardMap3
 Guicontrolget, OperationSub
 Guicontrolget, Operationenemy
 Guicontrolget, Leave_Operatio
@@ -1133,6 +1148,9 @@ Iniwrite, %Rarity4%, %SettingName%, Battle, Rarity4 ;超稀有
 Iniwrite, %DailyGoalSub%, %SettingName%, Battle, DailyGoalSub  ;自動執行每日任務
 Iniwrite, %DailyParty%, %SettingName%, Battle, DailyParty  ;每日隊伍選擇
 Iniwrite, %DailyGoalSunday%, %SettingName%, Battle, DailyGoalSunday ;禮拜日三個都打
+Iniwrite, %DailyHardMap%, %SettingName%, Battle, DailyHardMap
+Iniwrite, %DailyHardMap2%, %SettingName%, Battle, DailyHardMap2
+Iniwrite, %DailyHardMap3%, %SettingName%, Battle, DailyHardMap3
 Iniwrite, %DailyGoalRed%, %SettingName%, Battle, DailyGoalRed
 Iniwrite, %DailyGoalRedAction%, %SettingName%, Battle, DailyGoalRedAction
 Iniwrite, %DailyGoalGreen%, %SettingName%, Battle, DailyGoalGreen
@@ -1570,7 +1588,6 @@ IfInString, ThisVersion, stable
 else 
 	TestVer := 1
 filename = AzurLane v%NewVersion%.zip
-OnMessage(0x53, "Update_HELP")
 if (FileExist(filename) and NewVersion!=OldVersion)
 {
 	MB_Cancel := 1
@@ -1580,7 +1597,7 @@ if (FileExist(filename) and NewVersion!=OldVersion)
 	LogShow2("------------------------------------------------------------------------------")
 }
 else if (NewVersion!=OldVersion and (CheckUpdateMode="測試版" or (CheckUpdateMode="正式版" and IsStable=1))) {
-	Gui +OwnDialogs
+	OnMessage(0x53, "Update_HELP")
 	MsgBox, 0x4041, 設定精靈, 目前版本：%OldVersion%`n`nGitHub版本：%NewVersion%，是否自動下載？
 	IfMsgBox OK
 	{
@@ -2697,7 +2714,6 @@ if (Find(x, y, 750, 682, 850, 742, Battle_Map))
 								sleep 300
 							}
 						}
-						GuiControlGet, AnchorChapter
 						if (AnchorChapter="墜落1" and AnchorChapter2="1") ;直接滑動到BOSS可能的出生點
 						{
 							sleep 1000
@@ -3496,9 +3512,21 @@ if (Find(x, y, 95, 34, 195, 94, Weigh_Anchor)) ;在出擊選擇關卡的頁面
 		{
 			DailyDone := 0
 		}
+		else if (DailyHardMap)
+		{
+			DailyDone := 2
+		}
 		else 
 		{
 			DailyDone := 1
+		}
+		if (DailyHardMap and (DailyDone=0 or DailyDone=2)) ;切換地圖模式及關卡
+		{
+			LogShow("切換每日困難地圖：第 " DailyHardMap2 " 章 第 " DailyHardMap3 " 節 ")
+			AnchorMode := "困難"
+			AnchorChapter := DailyHardMap2
+			AnchorChapter2 := DailyHardMap3
+			IsDailyHardMap := 1
 		}
 		if (DailyDone=0)
 		{
@@ -3705,8 +3733,6 @@ if (Find(x, y, 95, 34, 195, 94, Weigh_Anchor)) ;在出擊選擇關卡的頁面
 	}
 	SelectMode()
 	sleep 500
-	GuiControlGet, AnchorChapter
-	GuiControlGet, AnchorChapter2
 	Chaptermessage = —選擇關卡： %AnchorMode% 第 %AnchorChapter% 章 第 %AnchorChapter2% 節。—
 	LogShow(Chaptermessage)
 	if (AnchorChapter=1 and AnchorChapter2=1) ; 選擇關卡 1-1
@@ -4649,6 +4675,13 @@ if  (DailyGoalSub and DailyDone<1)
 					AutoLoginIn()
 				}
 			}
+		}
+		if (DailyHardMap) ;切換地圖模式及關卡
+		{
+			AnchorMode := "困難"
+			AnchorChapter := DailyHardMap2
+			AnchorChapter2 := DailyHardMap3
+			IsDailyHardMap := 1
 		}
 	}
 	Iniwrite, %Today%, %SettingName%, Battle, Yesterday
@@ -6488,12 +6521,24 @@ ChooseParty(Byref StopAnchor)
 		}
 		else if Find(x, y, 377, 328, 477, 388, Fleet_Done) and (AnchorMode="困難")
 		{
-			LogShow("困難模式次數已用盡，停止出擊到永久。")
-			StopAnchor := 1
-			sleep 1000
-			C_Click(1230, 68) ;返回主選單
-			sleep 2000
-			return StopAnchor
+			if (IsDailyHardMap)
+			{
+				LogShow("每日困難地圖執行結束。")
+				Guicontrolget, AnchorMode
+				Guicontrolget, AnchorChapter
+				Guicontrolget, AnchorChapter2
+				IsDailyHardMap := 0
+				return
+			}
+			else
+			{
+				LogShow("困難模式次數已用盡，停止出擊到永久。")
+				StopAnchor := 1
+				sleep 1000
+				C_Click(1230, 68) ;返回主選單
+				sleep 2000
+				return StopAnchor
+			}
 		}
 		Loop, 20
 		{
